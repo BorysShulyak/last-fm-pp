@@ -1,0 +1,20 @@
+.Button {
+    padding: 8px;
+    margin-right: 4px;
+    background-color: #007FFF;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    color: #ffff;
+    outline: none;
+}
+
+.Button:hover {
+    background-color: #fff;
+    border: 1px solid #007FFF;
+    color: #007FFF;
+}
+
+.ActivePage {
+    background-color: #FFBE00;
+    color: #1e3349;
+}

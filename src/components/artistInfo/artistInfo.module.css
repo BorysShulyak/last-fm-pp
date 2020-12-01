@@ -1,0 +1,21 @@
+.ArtistName {
+    font-size: 24px;
+}
+
+.MediaContainer {
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.TagsContainer {
+    margin-left: 16px;
+}
+
+.TagList {
+    display: flex;
+}
+
+.Description {
+    font-size: 16px;
+}

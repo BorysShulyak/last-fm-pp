@@ -1,0 +1,17 @@
+.Menu {
+    padding: 24px;
+    background-color: #FBFBFB;
+}
+
+.MenuList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.HomeLink {
+    margin-right: 16px;
+}
+
+.LinkText {
+    font-size: 24px;
+}

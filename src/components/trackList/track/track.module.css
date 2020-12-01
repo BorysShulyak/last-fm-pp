@@ -1,0 +1,22 @@
+.Track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #007FFF;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.Artist {
+    font-size: 20px;
+    color: #007FFF;
+}
+
+.ArtistLink {
+    font-size: 16px;
+}
+
+.ArtistLink:hover {
+    font-weight: bold;
+    color: #007FFF;
+}
