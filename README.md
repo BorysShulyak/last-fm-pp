@@ -25,5 +25,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     </li>
 </ul>
 
+#Bugs
+
+Last.fm API method "chart.getTopTracks" has a BUG connected with incorrect pagination
+
 
 
