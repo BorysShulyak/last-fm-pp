@@ -2,23 +2,27 @@ import * as React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
+import {useQuery} from "../../hooks/useQuery";
 import {getSearchField, getSearchResults} from "../../core/tracks/tracks.selector";
 import {requestSearchTracks} from "../../core/tracks/tracks.reducer";
 import {getCurrentPage, getTotalPagesCount} from "../../core/pagination/pagination.selector";
 import {Pagination} from "../../components/common/pagination/pagination";
-import {Track} from "../../components/trackList/track/track";
 import {Input} from "../../components/common/input/input";
+import {TrackList} from "../../components/trackList/trackList";
+import {TrackShortInfo} from "../../components/trackList/trackShortInfo/trackShortInfo";
+import {setSearchField} from "../../core/tracks/tracks.action";
+import styles from './searchTrack.module.css'
 
 export const SearchTrack = () => {
     const dispatch = useDispatch()
     const history = useHistory()
+    const query = useQuery()
     const searchField = useSelector(getSearchField)
     const searchResults = useSelector(getSearchResults)
-
     const totalPagesCount = useSelector(getTotalPagesCount)
     const currentPage = useSelector(getCurrentPage)
 
-    const [inputValue, setInputValue] = useState(null)
+    const [inputValue, setInputValue] = useState('')
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value)
@@ -31,36 +35,48 @@ export const SearchTrack = () => {
     }
 
     useEffect(() => {
-        history.push({search: `?page=${currentPage}${searchField && `&track=${searchField}`}`})
+        const initialPage = parseInt(query.get('page'))
+        const initialSearchValue = query.get('track')
+        dispatch(requestSearchTracks(initialPage, initialSearchValue))
+        return () => {
+            dispatch(setSearchField(''))
+        }
+    }, [])
+    useEffect(() => {
+        history.push({search: searchField && `?page=${currentPage}$&track=${searchField}`})
     }, [currentPage, searchField])
 
     return (
-        <article>
+        <article className={styles.SearchTrackPage}>
+            <div>
                 <Input
-                    value={inputValue}
+                    value={inputValue || searchField}
                     handleChange={handleInputChange}
                     placeholder='Введите название трека'
                 />
-                <button type='submit' onClick={handleSubmit}>
+                <button className={styles.SearchBtn} type='submit' onClick={handleSubmit}>
                     Найти
                 </button>
-
-            <Pagination
-                totalPagesCount={totalPagesCount}
-                currentPage={currentPage}
-                handlePageChange={handlePageChange}
-            />
-            <ul>
-                {searchResults.map((track, index) => (
-                    <Track
-                        img={track.image[2]['#text']}
-                        trackName={track.name}
-                        artistName={track.artist.name}
-                        artistHref={track.artist.url}
-                        key={index}
-                    />))
-                }
-            </ul>
+            </div>
+            {searchField && (
+                <>
+                    <Pagination
+                        totalPagesCount={totalPagesCount}
+                        currentPage={currentPage}
+                        handlePageChange={handlePageChange}
+                    />
+                    <TrackList>
+                        {searchResults.map((track, index) => (
+                            <TrackShortInfo
+                                classes={styles.TrackShortInfo}
+                                trackName={track.name}
+                                artistName={track.artist}
+                                key={index}
+                            />))
+                        }
+                    </TrackList>
+                </>
+            )}
         </article>
     )
 }

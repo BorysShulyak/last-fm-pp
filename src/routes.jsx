@@ -25,7 +25,6 @@ const Routes = () => {
                     <Home/>
                 </Route>
             </Switch>
-            {/*<Footer/>*/}
         </Router>
     )
 }

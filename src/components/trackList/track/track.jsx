@@ -20,18 +20,16 @@ export const Track = ({
     return (
         <li className={classNames(styles.Track, classes)}>
             {img && <img src={img} alt=""/>}
-
-                <h1>Название трека: {trackName}</h1>
-                <Link
-                    to={`artistInfo?name=${artistName}`}
-                    onClick={handleArtistClick}
-                >
-                    <p className={styles.Artist}>Исполнитель: {artistName}</p>
-                </Link>
-                <a className={styles.ArtistLink} href={artistHref}>
-                    Ссылка на страницу исполнителя на сервисе Last.fm
-                </a>
-
+            <h1>Название трека: {trackName}</h1>
+            <Link
+                to={`artistInfo?name=${artistName}`}
+                onClick={handleArtistClick}
+            >
+                <p className={styles.Artist}>Исполнитель: {artistName}</p>
+            </Link>
+            <a className={styles.ArtistLink} href={artistHref} target="_blank">
+                Ссылка на страницу исполнителя на сервисе Last.fm
+            </a>
         </li>
     )
 }

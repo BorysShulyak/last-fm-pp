@@ -1,7 +1,8 @@
+import * as React from 'react'
 import Routes from "../routes";
-import styles from  './App.module.css';
 import {Provider} from "react-redux";
 import store from "../core/store";
+import styles from  './App.module.css';
 
 function App() {
   return (

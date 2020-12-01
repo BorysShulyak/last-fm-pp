@@ -7,28 +7,33 @@ import {getTopTracks} from "../../core/tracks/tracks.selector";
 import {Pagination} from "../../components/common/pagination/pagination";
 import {getCurrentPage, getTotalPagesCount} from "../../core/pagination/pagination.selector";
 import {Track} from "../../components/trackList/track/track";
-import styles from './home.module.css'
 import {TrackList} from "../../components/trackList/trackList";
 import {useQuery} from "../../hooks/useQuery";
+import {setCurrentPage} from "../../core/pagination/pagination.action";
+import styles from './home.module.css'
 
 export const Home = () => {
     const history = useHistory()
+    const dispatch = useDispatch()
     const query = useQuery()
+
     const topTracks = useSelector(getTopTracks)
     const totalPagesCount = useSelector(getTotalPagesCount)
     const currentPage = useSelector(getCurrentPage)
-    const dispatch = useDispatch()
+
     const handlePageChange = (pageNumber) => {
         dispatch(requestTopTracks(pageNumber))
     }
     useEffect(() => {
         const initialPage = parseInt(query.get('page'))
         dispatch(requestTopTracks(initialPage || 1))
+        return () => {
+            dispatch(setCurrentPage(1))
+        }
     }, [])
     useEffect(() => {
         history.push({search: `?page=${currentPage}`})
     }, [currentPage])
-
 
     return (
         <main className={styles.Home}>

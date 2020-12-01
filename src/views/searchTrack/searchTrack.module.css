@@ -1,0 +1,35 @@
+.SearchTrackPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.SearchBtn {
+    margin-left: 16px;
+    height: 100%;
+    background-color: #007FFF;
+    color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.SearchBtn:hover {
+    background-color: #ffffff;
+    color: #007FFF;
+    border: 1px solid #007FFF;
+}
+
+.Pagination {
+    margin-top: 16px;
+}
+
+.TrackShortInfo {
+    margin-top: 16px;
+    width: 30%;
+}

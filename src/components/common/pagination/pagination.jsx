@@ -10,16 +10,15 @@ export const Pagination = ({
     pagesPortionSize = 10,
     classes
 }) => {
-    const pages = [];
-    for (let i = 1; i <= totalPagesCount; i++) {
-        pages.push(i);
-    }
-
     const totalPagesPortionsCount = Math.ceil(totalPagesCount / pagesPortionSize);
     const [pagesPortionNumber, setPagesPortionNumber] = useState(1);
 
     const leftPagesPortionNumber = (pagesPortionNumber - 1) * pagesPortionSize + 1;
     const rightPagesPortionNumber = pagesPortionNumber * pagesPortionSize;
+    const pages = [];
+    for (let i = leftPagesPortionNumber; i <= rightPagesPortionNumber; i++) {
+        pages.push(i);
+    }
 
     const handlePrevPagesPortion = () => {
         setPagesPortionNumber(pagesPortionNumber - 1)
@@ -39,7 +38,6 @@ export const Pagination = ({
                 </button> }
 
             {pages
-                .filter(pageNumber => pageNumber >= leftPagesPortionNumber && pageNumber <= rightPagesPortionNumber)
                 .map(pageNumber => (
                     <button
                         className={
