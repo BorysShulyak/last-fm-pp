@@ -12,18 +12,12 @@ export const Track = ({
     artistHref,
     classes
 }) => {
-    const dispatch = useDispatch()
-    const handleArtistClick = () => {
-        dispatch(requestArtist(artistName))
-    }
-
     return (
         <li className={classNames(styles.Track, classes)}>
             {img && <img src={img} alt=""/>}
             <h1>Название трека: {trackName}</h1>
             <Link
                 to={`artistInfo?name=${artistName}`}
-                onClick={handleArtistClick}
             >
                 <p className={styles.Artist}>Исполнитель: {artistName}</p>
             </Link>
