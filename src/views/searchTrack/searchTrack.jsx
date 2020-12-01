@@ -61,6 +61,7 @@ export const SearchTrack = () => {
             {searchField && (
                 <>
                     <Pagination
+                        classes={styles.Pagination}
                         totalPagesCount={totalPagesCount}
                         currentPage={currentPage}
                         handlePageChange={handlePageChange}
