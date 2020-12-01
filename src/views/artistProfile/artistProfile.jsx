@@ -12,9 +12,7 @@ export const ArtistProfile = ({
 }) => {
     const dispatch= useDispatch()
     const artistInfo = useSelector(getArtistData)
-    useEffect(() => {
-        dispatch(requestArtist(artistInfo.name)) //for refreshing page
-    }, [])
+
     return (
         <article className={classNames(styles.ArtistPage, classes)}>
             <ArtistInfo
