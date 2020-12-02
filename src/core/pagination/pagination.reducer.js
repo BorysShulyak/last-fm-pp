@@ -14,12 +14,12 @@ export default (state = initialState, action) => {
         case SET_CURRENT_PAGE:
             return {
                 ...state,
-                currentPage: action.currentPage
+                currentPage: action.payload
             }
         case SET_TOTAL_PAGES_COUNT:
             return {
                 ...state,
-                totalPagesCount: action.totalPagesCount
+                totalPagesCount: action.payload
             }
         default:
             return state

@@ -21,22 +21,22 @@ export default (state = initialState, action) => {
         case SET_TOP_TRACKS:
             return {
                 ...state,
-                topTracks: action.topTacks
+                topTracks: action.payload
             }
         case SET_SEARCH_FIELD:
             return {
                 ...state,
-                searchField: action.searchField
+                searchField: action.payload
             }
         case SET_SEARCH_RESULTS:
             return {
                 ...state,
-                searchResults: action.searchResults
+                searchResults: action.payload
             }
         case SET_TRACKS_ERROR:
             return {
                 ...state,
-                error: action.error
+                error: action.payload
             }
         default:
             return state

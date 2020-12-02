@@ -11,12 +11,12 @@ export default (state = initialSate, action) => {
         case SET_ARTIST_INFO:
             return {
                 ...state,
-                artistData: action.artistInfo
+                artistData: action.payload
             }
         case SET_ARTIST_ERROR:
             return {
                 ...state,
-                error: action.error
+                error: action.payload
             }
         default:
             return state
